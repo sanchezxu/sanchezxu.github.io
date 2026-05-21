@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>完整经历 - 徐胜个人主页</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'charcoal': '#0F172A',
+            'deep-blue': '#1E293B',
+            'sky-highlight': '#4ECDC4',
+            'sky-dim': '#2DD4BF',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .btn-press {
+      transition: transform 0.15s ease;
+    }
+    .btn-press:active {
+      transform: scale(0.98);
+    }
+    .skill-tag {
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.05) 100%);
+      border: 1px solid rgba(78, 205, 196, 0.3);
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      color: #4ECDC4;
+      font-size: 0.875rem;
+    }
+    .nav-scrolled {
+      backdrop-filter: blur(10px);
+      background-color: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .timeline-item {
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #4ECDC4 0%, rgba(78, 205, 196, 0.2) 100%);
+      transform: translateX(-50%);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 24px;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: #4ECDC4;
+      border-radius: 50%;
+      border: 3px solid #1E293B;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .timeline-item::before {
+        left: 24px;
+      }
+      .timeline-dot {
+        left: 24px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-charcoal text-gray-100 min-h-screen">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 px-6 transition-all duration-300">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold text-sky-highlight">徐胜</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html#hero" class="text-gray-300 hover:text-sky-highlight transition-colors">主页</a>
+        <a href="index.html#education" class="text-gray-300 hover:text-sky-highlight transition-colors">教育背景</a>
+        <a href="index.html#experience" class="text-gray-300 hover:text-sky-highlight transition-colors">实习经历</a>
+        <a href="index.html#projects" class="text-gray-300 hover:text-sky-highlight transition-colors">个人项目</a>
+        <a href="index.html#skills" class="text-gray-300 hover:text-sky-highlight transition-colors">荣誉技能</a>
+        <a href="index.html#contact" class="text-gray-300 hover:text-sky-highlight transition-colors">联系我</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-lg bg-deep-blue hover:bg-gray-700 transition-colors btn-press">
+          <i id="theme-icon" class="fas fa-moon text-sky-highlight"></i>
+        </button>
+        <button id="menu-toggle" class="md:hidden p-2 rounded-lg bg-deep-blue hover:bg-gray-700 transition-colors">
+          <i class="fas fa-bars text-sky-highlight"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-deep-blue mt-4 mx-4 rounded-lg p-4">
+      <div class="flex flex-col space-y-3">
+        <a href="index.html#hero" class="text-gray-300 hover:text-sky-highlight transition-colors">主页</a>
+        <a href="index.html#education" class="text-gray-300 hover:text-sky-highlight transition-colors">教育背景</a>
+        <a href="index.html#experience" class="text-gray-300 hover:text-sky-highlight transition-colors">实习经历</a>
+        <a href="index.html#projects" class="text-gray-300 hover:text-sky-highlight transition-colors">个人项目</a>
+        <a href="index.html#skills" class="text-gray-300 hover:text-sky-highlight transition-colors">荣誉技能</a>
+        <a href="index.html#contact" class="text-gray-300 hover:text-sky-highlight transition-colors">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pt-24 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center mb-8">
+        <a href="index.html#experience" class="text-gray-400 hover:text-sky-highlight transition-colors mr-4">
+          <i class="fas fa-arrow-left text-xl"></i>
+        </a>
+        <span class="text-gray-400">/</span>
+        <span class="text-sky-highlight ml-4">完整经历</span>
+      </div>
+
+      <h1 class="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center">
+        <i class="fas fa-timeline text-sky-highlight mr-3"></i>
+        职业经历时间线
+      </h1>
+
+      <div class="space-y-12">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="md:text-right">
+              <div class="bg-deep-blue rounded-2xl p-6">
+                <div class="flex items-center justify-end mb-3">
+                  <span class="text-gray-400 text-sm">2026年1月 - 2026年4月</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">阿维塔科技（重庆）股份有限公司</h3>
+                <p class="text-sky-highlight font-medium mb-4">数据策略运营实习生</p>
+                <div class="flex flex-wrap justify-end gap-2">
+                  <span class="skill-tag">数据监控</span>
+                  <span class="skill-tag">转化分析</span>
+                  <span class="skill-tag">策略优化</span>
+                </div>
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div></div>
+            <div>
+              <div class="bg-deep-blue rounded-2xl p-6">
+                <div class="flex items-center mb-3">
+                  <span class="text-gray-400 text-sm">2025年9月 - 2025年12月</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">国投证券 - 硬科技组</h3>
+                <p class="text-sky-highlight font-medium mb-4">行业研究实习生</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="skill-tag">行业研究</span>
+                  <span class="skill-tag">公司估值</span>
+                  <span class="skill-tag">投资分析</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="md:text-right">
+              <div class="bg-deep-blue rounded-2xl p-6">
+                <div class="flex items-center justify-end mb-3">
+                  <span class="text-gray-400 text-sm">2022年9月 - 至今</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">西南财经大学</h3>
+                <p class="text-sky-highlight font-medium mb-4">经济学（国家经济学基础人才培养基地班）</p>
+                <div class="flex flex-wrap justify-end gap-2">
+                  <span class="skill-tag">经济学</span>
+                  <span class="skill-tag">金融科技</span>
+                  <span class="skill-tag">数据分析</span>
+                </div>
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center">
+          <i class="fas fa-project-diagram text-sky-highlight mr-3"></i>
+          项目经验
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-deep-blue rounded-2xl p-6 hover:transform hover:-translate-y-1 transition-transform">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 bg-sky-highlight/10 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-users text-sky-highlight"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">基于K-Means算法的销售客户聚类分析</h3>
+                <p class="text-gray-400 text-sm">阿维塔科技实习项目</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">处理10万+条销售服务数据，通过K-Means聚类将客户划分为4类，制定差异化销售策略。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">K-Means</span>
+              <span class="skill-tag">数据可视化</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-green-400 text-sm">成果：月度成交量提升5.3%</span>
+              <a href="project-detail.html?id=kmeans" class="text-sky-highlight hover:underline text-sm">查看详情</a>
+            </div>
+          </div>
+
+          <div class="bg-deep-blue rounded-2xl p-6 hover:transform hover:-translate-y-1 transition-transform">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 bg-sky-highlight/10 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-flask-conical text-sky-highlight"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">策略营销效果A/B测试分析</h3>
+                <p class="text-gray-400 text-sm">阿维塔科技实习项目</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">完成264万+条营销广告数据清洗，采用独立双样本Z检验进行假设验证。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">A/B测试</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-green-400 text-sm">成果：策略二效果提升1.3%</span>
+              <a href="project-detail.html?id=abtest" class="text-sky-highlight hover:underline text-sm">查看详情</a>
+            </div>
+          </div>
+
+          <div class="bg-deep-blue rounded-2xl p-6 hover:transform hover:-translate-y-1 transition-transform md:col-span-2">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 bg-sky-highlight/10 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-book-open text-sky-highlight"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">自动撰写小说智能体(Agent)</h3>
+                <p class="text-gray-400 text-sm">个人独立项目</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">基于大语言模型搭建端到端自动小说创作智能体，支持自定义角色设定、世界观构建、情节生成与章节续写。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-tag">LLM API</span>
+              <span class="skill-tag">Prompt Engineering</span>
+              <span class="skill-tag">Agent工作流</span>
+              <span class="skill-tag">Python</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-green-400 text-sm">多轮对话式创作体验</span>
+              <a href="project-detail.html?id=novel" class="text-sky-highlight hover:underline text-sm">查看详情</a>
+            </div>
+          </div>
+
+          <div class="bg-deep-blue rounded-2xl p-6 hover:transform hover:-translate-y-1 transition-transform">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 bg-sky-highlight/10 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-briefcase text-sky-highlight"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white">互联网+文创产品创业项目</h3>
+                <p class="text-gray-400 text-sm">项目负责人 | 2023年3月 - 2023年6月</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mb-4">主导文创产品从0到1全流程策划与落地，通过用户调研挖掘年轻群体需求，协调跨职能团队完成产品设计、生产与试销。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="skill-tag">项目管理</span>
+              <span class="skill-tag">用户研究</span>
+              <span class="skill-tag">跨部门沟通</span>
+              <span class="skill-tag">商业落地</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-green-400 text-sm">收集200+有效样本，按时交付</span>
+              <a href="project-detail.html?id=startup" class="text-sky-highlight hover:underline text-sm">查看详情</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 px-6 bg-deep-blue">
+    <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">
+      © 2026 徐胜 保留所有权利
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+
+    const isDarkMode = localStorage.getItem('darkMode') === 'true' || !localStorage.getItem('darkMode');
+    
+    if (!isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const darkMode = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', darkMode);
+      
+      if (darkMode) {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    });
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

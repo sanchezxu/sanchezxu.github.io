@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>操作手册 - AI小说创作平台</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'charcoal': '#0F172A',
+            'deep-blue': '#1E293B',
+            'sky-highlight': '#4ECDC4',
+            'sky-dim': '#2DD4BF',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .btn-press {
+      transition: transform 0.15s ease;
+    }
+    .btn-press:active {
+      transform: scale(0.98);
+    }
+    .nav-scrolled {
+      backdrop-filter: blur(10px);
+      background-color: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    code {
+      background: rgba(78, 205, 196, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Fira Code', 'Monaco', monospace;
+      font-size: 0.875rem;
+      color: #4ECDC4;
+    }
+    pre {
+      background: #0F172A;
+      border: 1px solid rgba(78, 205, 196, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+      color: #E2E8F0;
+    }
+    .table-container {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(78, 205, 196, 0.2);
+    }
+    th {
+      color: #4ECDC4;
+      font-weight: 600;
+    }
+    .toc-link {
+      transition: all 0.2s ease;
+    }
+    .toc-link:hover {
+      color: #4ECDC4;
+      padding-left: 8px;
+    }
+    .anchor-link {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    h2:hover .anchor-link, h3:hover .anchor-link {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-charcoal text-gray-100 min-h-screen">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 px-6 transition-all duration-300">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold text-sky-highlight">徐胜</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html#hero" class="text-gray-300 hover:text-sky-highlight transition-colors">主页</a>
+        <a href="index.html#projects" class="text-gray-300 hover:text-sky-highlight transition-colors">个人项目</a>
+      </div>
+      <button id="theme-toggle" class="p-2 rounded-lg bg-deep-blue hover:bg-gray-700 transition-colors btn-press">
+        <i id="theme-icon" class="fas fa-moon text-sky-highlight"></i>
+      </button>
+    </div>
+  </nav>
+
+  <section class="pt-24 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center mb-8">
+        <a href="project-detail.html?id=novel" class="text-gray-400 hover:text-sky-highlight transition-colors mr-4">
+          <i class="fas fa-arrow-left text-xl"></i>
+        </a>
+        <span class="text-gray-400">/</span>
+        <span class="text-sky-highlight ml-4">操作手册</span>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-1">
+          <div class="bg-deep-blue rounded-2xl p-6 sticky top-24">
+            <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+              <i class="fas fa-list-ul text-sky-highlight mr-2"></i>
+              目录
+            </h3>
+            <nav class="space-y-2">
+              <a href="#intro" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">项目简介</a>
+              <a href="#environment" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">环境要求</a>
+              <a href="#installation" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">安装步骤</a>
+              <a href="#running" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">运行项目</a>
+              <a href="#access" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">访问服务</a>
+              <a href="#usage" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">快速使用指南</a>
+              <a href="#structure" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">项目结构</a>
+              <a href="#models" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">支持的AI模型</a>
+              <a href="#api" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">主要API分组</a>
+              <a href="#faq" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">常见问题</a>
+              <a href="#notes" class="block text-gray-400 hover:text-sky-highlight text-sm toc-link">注意事项</a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-8">
+          <div class="bg-deep-blue rounded-2xl p-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">AI小说创作平台 - 操作手册</h1>
+            <p class="text-gray-400">基于 FastAPI 的 AI 小说创作平台后端服务</p>
+          </div>
+
+          <div id="intro" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-book-open text-sky-highlight mr-3"></i>
+              项目简介
+              <a href="#intro" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            <p class="text-gray-300 mb-6">这是一个基于 FastAPI 的 AI 小说创作平台后端服务，支持：</p>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-charcoal rounded-xl p-4">
+                <i class="fas fa-robot text-sky-highlight text-2xl mb-3"></i>
+                <h4 class="text-gray-200 font-medium mb-2">多AI大模型支持</h4>
+                <p class="text-gray-400 text-sm">DeepSeek、Qwen、百川、智谱、豆包、文心等</p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <i class="fas fa-file-alt text-sky-highlight text-2xl mb-3"></i>
+                <h4 class="text-gray-200 font-medium mb-2">小说大纲自动生成</h4>
+                <p class="text-gray-400 text-sm">智能生成小说结构框架</p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <i class="fas fa-users text-sky-highlight text-2xl mb-3"></i>
+                <h4 class="text-gray-200 font-medium mb-2">角色与世界观管理</h4>
+                <p class="text-gray-400 text-sm">丰富的角色创建与设定功能</p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <i class="fas fa-pen-fancy text-sky-highlight text-2xl mb-3"></i>
+                <h4 class="text-gray-200 font-medium mb-2">自动写作与章节生成</h4>
+                <p class="text-gray-400 text-sm">智能续写与章节创作</p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <i class="fas fa-chart-line text-sky-highlight text-2xl mb-3"></i>
+                <h4 class="text-gray-200 font-medium mb-2">写作统计与目标追踪</h4>
+                <p class="text-gray-400 text-sm">详细的写作数据分析</p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <i class="fas fa-download text-sky-highlight text-2xl mb-3"></i>
+                <h4 class="text-gray-200 font-medium mb-2">多格式导出</h4>
+                <p class="text-gray-400 text-sm">TXT、JSON、HTML格式支持</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="environment" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-desktop text-sky-highlight mr-3"></i>
+              环境要求
+              <a href="#environment" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            <ul class="space-y-3">
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check-circle text-sky-highlight mr-3"></i>
+                Python 3.9+
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check-circle text-sky-highlight mr-3"></i>
+                Windows / Linux / macOS
+              </li>
+            </ul>
+          </div>
+
+          <div id="installation" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-rocket text-sky-highlight mr-3"></i>
+              安装步骤
+              <a href="#installation" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">1</span>
+                  创建虚拟环境（推荐）
+                </h3>
+                <pre><code>cd d:\PyProject\novel\Apply
+python -m venv venv</code></pre>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">2</span>
+                  激活虚拟环境
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-gray-400 text-sm mb-2">Windows:</p>
+                    <pre><code>venv\Scripts\activate</code></pre>
+                  </div>
+                  <div>
+                    <p class="text-gray-400 text-sm mb-2">Linux/macOS:</p>
+                    <pre><code>source venv/bin/activate</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">3</span>
+                  安装依赖
+                </h3>
+                <pre><code>cd d:\PyProject\novel\Apply
+pip install -r requirements.txt</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div id="running" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-play text-sky-highlight mr-3"></i>
+              运行项目
+              <a href="#running" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3">方式一：使用启动脚本（推荐）</h3>
+                <pre><code>cd d:\PyProject\novel\Apply
+python main.py</code></pre>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3">方式二：使用 uvicorn 直接启动</h3>
+                <pre><code>cd d:\PyProject\novel\Apply
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div id="access" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-globe text-sky-highlight mr-3"></i>
+              访问服务
+              <a href="#access" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            <p class="text-gray-300 mb-4">启动成功后，打开浏览器访问：</p>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>地址</th>
+                    <th>说明</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>http://localhost:8000</code></td>
+                    <td>应用首页</td>
+                  </tr>
+                  <tr>
+                    <td><code>http://localhost:8000/docs</code></td>
+                    <td><span class="text-sky-highlight">Swagger UI</span> - API交互文档</td>
+                  </tr>
+                  <tr>
+                    <td><code>http://localhost:8000/redoc</code></td>
+                    <td>ReDoc - API参考文档</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="usage" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-book-open text-sky-highlight mr-3"></i>
+              快速使用指南
+              <a href="#usage" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">1</span>
+                  注册账号
+                </h3>
+                <pre><code>POST /users/register
+{
+  "email": "your_email@example.com",
+  "password": "your_password"
+}</code></pre>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">2</span>
+                  登录获取Token
+                </h3>
+                <pre><code>POST /users/login
+{
+  "email": "your_email@example.com",
+  "password": "your_password"
+}</code></pre>
+                <p class="text-gray-400 text-sm mt-3">
+                  <strong class="text-sky-highlight">返回的Token使用方式：</strong>
+                  在请求头中添加：<code>Authorization: Bearer &lt;your_token&gt;</code>
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">3</span>
+                  配置API密钥（重要！）
+                </h3>
+                <pre><code>PUT /users/me
+{
+  "api_key": "your-llm-api-key",
+  "llm_provider": "deepseek",
+  "llm_model": "deepseek-chat"
+}</code></pre>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">4</span>
+                  创建小说
+                </h3>
+                <pre><code>POST /novels/
+{
+  "name": "我的小说",
+  "genre": "仙侠",
+  "target_chapters": 100
+}</code></pre>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">5</span>
+                  生成大纲与角色
+                </h3>
+                <pre><code>POST /novels/{novel_id}/outlines/generate
+POST /novels/{novel_id}/characters/generate
+{
+  "count": 5
+}</code></pre>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-medium text-white mb-3 flex items-center">
+                  <span class="bg-sky-highlight/20 text-sky-highlight px-2 py-1 rounded text-sm mr-3">6</span>
+                  启动自动写作
+                </h3>
+                <pre><code>POST /novels/{novel_id}/auto-write
+{
+  "start_chapter": 1,
+  "end_chapter": 50
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div id="structure" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-folder-open text-sky-highlight mr-3"></i>
+              项目结构
+              <a href="#structure" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            <pre><code>d:\PyProject\novel\Apply\
+├── main.py                 # 应用入口
+├── requirements.txt        # 依赖列表
+├── app/
+│   ├── main.py           # FastAPI应用配置
+│   ├── core/             # 核心配置
+│   │   ├── database.py   # 数据库连接
+│   │   ├── settings.py   # 应用设置
+│   │   └── i18n.py       # 国际化
+│   ├── models/           # 数据模型
+│   ├── schemas/          # Pydantic模型
+│   ├── services/         # 业务逻辑
+│   ├── api/v1/           # API路由
+│   └── utils/            # 工具函数
+└── novel_apply.db        # SQLite数据库</code></pre>
+          </div>
+
+          <div id="models" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-brain text-sky-highlight mr-3"></i>
+              支持的AI模型
+              <a href="#models" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>提供商</th>
+                    <th>Provider ID</th>
+                    <th>默认模型</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>深度求索 DeepSeek</td><td><code>deepseek</code></td><td>deepseek-chat</td></tr>
+                  <tr><td>通义千问 Qwen</td><td><code>qwen</code></td><td>qwen-turbo</td></tr>
+                  <tr><td>百川大模型</td><td><code>baichuan</code></td><td>Baichuan2-Turbo</td></tr>
+                  <tr><td>智谱清言</td><td><code>zhipu</code></td><td>glm-4</td></tr>
+                  <tr><td>豆包 Doubao</td><td><code>doubao</code></td><td>doubao-pro</td></tr>
+                  <tr><td>文心一言 ERNIE</td><td><code>ernie</code></td><td>ernie-4.0</td></tr>
+                  <tr><td>OpenAI</td><td><code>openai</code></td><td>gpt-3.5-turbo</td></tr>
+                  <tr><td>本地模型</td><td><code>local</code></td><td>chatglm3-6b</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="api" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-network-wired text-sky-highlight mr-3"></i>
+              主要API分组
+              <a href="#api" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="bg-charcoal rounded-xl p-4">
+                <div class="text-sky-highlight font-mono text-sm mb-2">/users</div>
+                <div class="text-gray-300">用户 - 注册、登录、设置</div>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <div class="text-sky-highlight font-mono text-sm mb-2">/novels</div>
+                <div class="text-gray-300">小说 - 小说CRUD</div>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <div class="text-sky-highlight font-mono text-sm mb-2">/characters</div>
+                <div class="text-gray-300">角色 - 角色管理</div>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <div class="text-sky-highlight font-mono text-sm mb-2">/outlines</div>
+                <div class="text-gray-300">大纲 - 大纲管理</div>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <div class="text-sky-highlight font-mono text-sm mb-2">/chapters</div>
+                <div class="text-gray-300">写作 - 章节管理</div>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <div class="text-sky-highlight font-mono text-sm mb-2">/dashboard</div>
+                <div class="text-gray-300">仪表盘 - 写作统计</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="faq" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-question-circle text-sky-highlight mr-3"></i>
+              常见问题
+              <a href="#faq" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            
+            <div class="space-y-4">
+              <div class="bg-charcoal rounded-xl p-4">
+                <h4 class="text-gray-200 font-medium mb-2">Q1: 启动时报错 "email-validator is not installed"</h4>
+                <pre><code>pip install email-validator</code></pre>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <h4 class="text-gray-200 font-medium mb-2">Q2: 数据库报错</h4>
+                <p class="text-gray-400 text-sm">删除 <code>novel_apply.db</code> 文件后重新启动，应用会自动创建新数据库。</p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <h4 class="text-gray-200 font-medium mb-2">Q3: API密钥配置后不生效</h4>
+                <p class="text-gray-400 text-sm">确保在请求头中正确添加了 <code>Authorization: Bearer &lt;token&gt;</code></p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <h4 class="text-gray-200 font-medium mb-2">Q4: 端口被占用</h4>
+                <p class="text-gray-400 text-sm">修改 <code>app/core/settings.py</code> 中的端口号，或结束占用端口的进程。</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="notes" class="bg-deep-blue rounded-2xl p-8">
+            <h2 class="text-xl font-semibold text-white mb-6 flex items-center">
+              <i class="fas fa-info-circle text-sky-highlight mr-3"></i>
+              注意事项
+              <a href="#notes" class="anchor-link ml-2 text-gray-500"><i class="fas fa-link"></i></a>
+            </h2>
+            <ul class="space-y-3">
+              <li class="flex items-start text-gray-300">
+                <i class="fas fa-shield-alt text-sky-highlight mr-3 mt-1"></i>
+                <span><strong>API密钥安全</strong>：所有API密钥存储在用户个人账户中，不会泄露</span>
+              </li>
+              <li class="flex items-start text-gray-300">
+                <i class="fas fa-database text-sky-highlight mr-3 mt-1"></i>
+                <span><strong>数据存储</strong>：小说章节默认保存到 <code>D:/novel</code> 目录</span>
+              </li>
+              <li class="flex items-start text-gray-300">
+                <i class="fas fa-gauge text-sky-highlight mr-3 mt-1"></i>
+                <span><strong>Token配额</strong>：可在个人设置中调整每日Token限制</span>
+              </li>
+              <li class="flex items-start text-gray-300">
+                <i class="fas fa-tasks text-sky-highlight mr-3 mt-1"></i>
+                <span><strong>自动写作</strong>：任务在后台运行，可通过 <code>/tasks</code> 查看进度</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 px-6 bg-deep-blue">
+    <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">
+      © 2026 徐胜 保留所有权利
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+
+    const isDarkMode = localStorage.getItem('darkMode') === 'true' || !localStorage.getItem('darkMode');
+    
+    if (!isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const darkMode = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', darkMode);
+      
+      if (darkMode) {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    });
+  </script>
+</body>
+</html>

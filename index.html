@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>徐胜 - 个人主页</title>
+  <meta name="description" content="西南财经大学经济学基地班 | 数据分析师 | 金融+硬科技复合背景" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'charcoal': '#0F172A',
+            'deep-blue': '#1E293B',
+            'sky-highlight': '#4ECDC4',
+            'sky-dim': '#2DD4BF',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(78, 205, 196, 0.15);
+    }
+    .btn-press {
+      transition: transform 0.15s ease;
+    }
+    .btn-press:active {
+      transform: scale(0.98);
+    }
+    .nav-scrolled {
+      backdrop-filter: blur(10px);
+      background-color: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-tag {
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.05) 100%);
+      border: 1px solid rgba(78, 205, 196, 0.3);
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      color: #4ECDC4;
+      font-size: 0.875rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="bg-charcoal text-gray-100 min-h-screen">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 px-6 transition-all duration-300">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="text-xl font-bold text-sky-highlight">徐胜</div>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#hero" class="text-gray-300 hover:text-sky-highlight transition-colors">主页</a>
+        <a href="#education" class="text-gray-300 hover:text-sky-highlight transition-colors">教育背景</a>
+        <a href="#experience" class="text-gray-300 hover:text-sky-highlight transition-colors">实习经历</a>
+        <a href="#projects" class="text-gray-300 hover:text-sky-highlight transition-colors">个人项目</a>
+        <a href="#skills" class="text-gray-300 hover:text-sky-highlight transition-colors">荣誉技能</a>
+        <a href="#contact" class="text-gray-300 hover:text-sky-highlight transition-colors">联系我</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-lg bg-deep-blue hover:bg-gray-700 transition-colors btn-press">
+          <i id="theme-icon" class="fas fa-moon text-sky-highlight"></i>
+        </button>
+        <button id="menu-toggle" class="md:hidden p-2 rounded-lg bg-deep-blue hover:bg-gray-700 transition-colors">
+          <i class="fas fa-bars text-sky-highlight"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-deep-blue mt-4 mx-4 rounded-lg p-4">
+      <div class="flex flex-col space-y-3">
+        <a href="#hero" class="text-gray-300 hover:text-sky-highlight transition-colors">主页</a>
+        <a href="#education" class="text-gray-300 hover:text-sky-highlight transition-colors">教育背景</a>
+        <a href="#experience" class="text-gray-300 hover:text-sky-highlight transition-colors">实习经历</a>
+        <a href="#projects" class="text-gray-300 hover:text-sky-highlight transition-colors">个人项目</a>
+        <a href="#skills" class="text-gray-300 hover:text-sky-highlight transition-colors">荣誉技能</a>
+        <a href="#contact" class="text-gray-300 hover:text-sky-highlight transition-colors">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero" class="pt-24 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-12 gap-8">
+        <div class="md:col-span-7 space-y-6">
+          <div class="flex flex-col items-center md:items-start">
+            <div class="relative">
+              <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20young%20asian%20male%20data%20analyst%20portrait%20headshot%20wearing%20business%20casual%20clothes%20clean%20background%20corporate%20style&image_size=square" 
+                   alt="徐胜" 
+                   class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-sky-highlight object-cover" />
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mt-4">徐胜</h1>
+            <div class="text-sm text-gray-500 mt-2 text-center md:text-left">
+              <span>23岁 | 成都</span>
+              <span class="mx-2">|</span>
+              <span>17828016958</span>
+              <span class="mx-2">|</span>
+              <span>sanchezxu@163.com</span>
+            </div>
+            <div class="flex space-x-4 mt-4">
+              <button class="px-6 py-2.5 bg-sky-highlight text-charcoal font-semibold rounded-lg hover:bg-sky-dim transition-colors btn-press">
+                下载简历
+              </button>
+              <a href="#contact" class="px-6 py-2.5 border border-sky-highlight text-sky-highlight font-semibold rounded-lg hover:bg-sky-highlight hover:text-charcoal transition-colors btn-press">
+                联系我
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-5">
+          <div class="hero-grid">
+            <div class="bg-deep-blue rounded-xl p-6 card-hover">
+              <div class="text-3xl font-bold text-sky-highlight">3.7</div>
+              <div class="text-gray-400 text-sm mt-1">GPA（专业前15%）</div>
+            </div>
+            <div class="bg-deep-blue rounded-xl p-6 card-hover">
+              <div class="text-3xl font-bold text-sky-highlight">2段</div>
+              <div class="text-gray-400 text-sm mt-1">头部企业实习</div>
+            </div>
+            <div class="bg-deep-blue rounded-xl p-6 card-hover">
+              <div class="text-3xl font-bold text-sky-highlight">2个</div>
+              <div class="text-gray-400 text-sm mt-1">个人项目</div>
+            </div>
+            <div class="bg-deep-blue rounded-xl p-6 card-hover">
+              <div class="text-3xl font-bold text-sky-highlight">1项</div>
+              <div class="text-gray-400 text-sm mt-1">省级数学竞赛一等奖</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="py-16 px-6 bg-deep-blue">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+        <i class="fas fa-graduation-cap text-sky-highlight mr-3"></i>
+        教育背景
+      </h2>
+      <div class="bg-charcoal rounded-2xl p-8 card-hover">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+          <div>
+            <h3 class="text-xl font-semibold text-white">西南财经大学</h3>
+            <p class="text-sky-highlight font-medium">经济学（国家经济学基础人才培养基地班）</p>
+          </div>
+          <p class="text-gray-400 text-sm mt-2 md:mt-0">2022年9月 - 2026年6月</p>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <i class="fas fa-award text-sky-highlight mt-1 mr-3"></i>
+            <div>
+              <p class="text-gray-300">211/双一流高校，全国仅13个国家级经济学基础人才培养基地之一</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <i class="fas fa-chart-line text-sky-highlight mt-1 mr-3"></i>
+            <div>
+              <p class="text-gray-300">GPA 3.7/4.0（专业前15%），雅思6.5</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <i class="fas fa-book-open text-sky-highlight mt-1 mr-3"></i>
+            <div>
+              <p class="text-gray-300">核心课程：数学分析、概率论与数理统计、会计学、货币金融、Python机器学习、数据挖掘与可视化、SQL数据库</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+        <i class="fas fa-briefcase text-sky-highlight mr-3"></i>
+        实习经历
+      </h2>
+      <div class="space-y-6">
+        <div class="bg-deep-blue rounded-2xl p-8 card-hover">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+            <div>
+              <h3 class="text-xl font-semibold text-white">阿维塔科技（重庆）股份有限公司</h3>
+              <p class="text-sky-highlight font-medium">数据策略运营实习生</p>
+            </div>
+            <p class="text-gray-400 text-sm mt-2 md:mt-0">2026年1月 - 2026年4月</p>
+          </div>
+          <p class="text-gray-300 mb-4">负责全国销售体系全链路数据监控、转化分析与策略优化，支撑区域销售目标达成</p>
+          <div class="mb-6">
+            <h4 class="text-gray-200 font-medium mb-3">量化成果</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-sky-highlight mt-1 mr-2"></i>
+                每日独立搭建8+版实时数据看板，跟踪过程指标并每日复盘卡点，推动日目标完成率提升1%，周度目标完成率环比增长10%
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-sky-highlight mt-1 mr-2"></i>
+                开展销售漏斗全链路分析，定位一二级线索转化瓶颈，破解辛普森悖论问题，推动整体转化率提升6%-8%，目标达成率环比提升15%+
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-sky-highlight mt-1 mr-2"></i>
+                识别门店过程造假、线索虚假跟进等问题，制定门店管理优化方案，使无效线索占比下降10%，周度成交量环比增长9.23%
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-gray-200 font-medium mb-3">核心项目</h4>
+            <div class="space-y-3">
+              <div class="bg-charcoal rounded-xl p-4">
+                <a href="project-detail.html?id=kmeans" class="text-sky-highlight hover:underline font-medium">基于K-Means算法的销售客户聚类分析</a>
+                <p class="text-gray-400 text-sm mt-2">处理10万+条销售服务数据，通过K-Means聚类将客户划分为4类，制定差异化策略，月度车辆成交量环比上升5.3%</p>
+              </div>
+              <div class="bg-charcoal rounded-xl p-4">
+                <a href="project-detail.html?id=abtest" class="text-sky-highlight hover:underline font-medium">策略营销效果A/B测试分析</a>
+                <p class="text-gray-400 text-sm mt-2">完成264万+条营销广告数据清洗，采用独立双样本Z检验进行假设验证，验证策略二投放效果提升1.3%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-deep-blue rounded-2xl p-8 card-hover">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+            <div>
+              <h3 class="text-xl font-semibold text-white">国投证券 - 硬科技组</h3>
+              <p class="text-sky-highlight font-medium">行业研究实习生</p>
+            </div>
+            <p class="text-gray-400 text-sm mt-2 md:mt-0">2025年9月 - 2025年12月</p>
+          </div>
+          <p class="text-gray-300 mb-4">覆盖消费电子、光通信、半导体赛道，负责公司深度研究与业绩跟踪，输出投资分析报告</p>
+          <div>
+            <h4 class="text-gray-200 font-medium mb-3">量化成果</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-sky-highlight mt-1 mr-2"></i>
+                独立撰写环旭电子(SH.601231)跟踪报告，基于消费电子、SiP、光通信三大业务线，结合量价分析测算市场增量空间30%
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-sky-highlight mt-1 mr-2"></i>
+                采用同花顺iFind DCF模型进行公司估值，给予"买入"评级，后续目标价涨幅达20%-30%
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-sky-highlight mt-1 mr-2"></i>
+                协助撰写环旭电子、炬光科技等多家公司季度业绩点评报告，聚焦光通信、CPO、OCS等前沿领域布局
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center">
+          <a href="experiences.html" class="inline-flex items-center px-6 py-3 border border-sky-highlight text-sky-highlight font-semibold rounded-lg hover:bg-sky-highlight hover:text-charcoal transition-colors btn-press">
+            <i class="fas fa-external-link-alt mr-2"></i>
+            查看完整经历
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-16 px-6 bg-deep-blue">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+        <i class="fas fa-project-diagram text-sky-highlight mr-3"></i>
+        个人项目
+      </h2>
+      <div class="bg-charcoal rounded-2xl p-8 card-hover">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+          <div>
+            <h3 class="text-xl font-semibold text-white">自动撰写小说智能体(Agent)</h3>
+          </div>
+        </div>
+        <p class="text-gray-300 mb-6">基于大语言模型搭建端到端自动小说创作智能体，支持自定义角色设定、世界观构建、情节生成与章节续写</p>
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+          <div class="bg-deep-blue rounded-xl p-4">
+            <i class="fas fa-comments text-sky-highlight text-2xl mb-3"></i>
+            <h4 class="text-gray-200 font-medium mb-2">多轮对话式情节调整</h4>
+            <p class="text-gray-400 text-sm">支持与AI进行多轮交互，实时调整小说情节发展方向</p>
+          </div>
+          <div class="bg-deep-blue rounded-xl p-4">
+            <i class="fas fa-user-check text-sky-highlight text-2xl mb-3"></i>
+            <h4 class="text-gray-200 font-medium mb-2">角色性格一致性保持</h4>
+            <p class="text-gray-400 text-sm">通过Prompt Engineering确保角色性格在整个故事中保持一致</p>
+          </div>
+          <div class="bg-deep-blue rounded-xl p-4">
+            <i class="fas fa-check-circle text-sky-highlight text-2xl mb-3"></i>
+            <h4 class="text-gray-200 font-medium mb-2">剧情逻辑自洽性校验</h4>
+            <p class="text-gray-400 text-sm">内置剧情逻辑校验机制，确保故事发展符合逻辑</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="skill-tag">LLM API</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Agent工作流设计</span>
+          <span class="skill-tag">Python</span>
+        </div>
+        <div class="text-center">
+          <a href="project-detail.html?id=novel" class="inline-flex items-center px-6 py-3 bg-sky-highlight text-charcoal font-semibold rounded-lg hover:bg-sky-dim transition-colors btn-press">
+            <i class="fas fa-external-link-alt mr-2"></i>
+            查看项目详情
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-charcoal rounded-2xl p-8 card-hover mt-6">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+          <div>
+            <h3 class="text-xl font-semibold text-white">互联网+文创产品创业项目</h3>
+            <p class="text-sky-highlight font-medium">项目负责人</p>
+          </div>
+          <p class="text-gray-400 text-sm mt-2 md:mt-0">2023年4月 - 2023年6月</p>
+        </div>
+        <p class="text-gray-300 mb-6">主导文创产品从0到1全流程策划与落地，通过用户调研挖掘年轻群体需求，协调跨职能团队完成产品设计、生产与试销</p>
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+          <div class="bg-deep-blue rounded-xl p-4">
+            <i class="fas fa-users text-sky-highlight text-2xl mb-3"></i>
+            <h4 class="text-gray-200 font-medium mb-2">用户研究</h4>
+            <p class="text-gray-400 text-sm">定性访谈+定量问卷收集200+有效样本</p>
+          </div>
+          <div class="bg-deep-blue rounded-xl p-4">
+            <i class="fas fa-users text-sky-highlight text-2xl mb-3"></i>
+            <h4 class="text-gray-200 font-medium mb-2">团队协调</h4>
+            <p class="text-gray-400 text-sm">协调3个跨职能团队共8人，按时交付</p>
+          </div>
+          <div class="bg-deep-blue rounded-xl p-4">
+            <i class="fas fa-store text-sky-highlight text-2xl mb-3"></i>
+            <h4 class="text-gray-200 font-medium mb-2">商业落地</h4>
+            <p class="text-gray-400 text-sm">对接供应商完成样品打样与试销</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="skill-tag">项目管理</span>
+          <span class="skill-tag">用户研究</span>
+          <span class="skill-tag">跨部门沟通</span>
+          <span class="skill-tag">商业落地</span>
+        </div>
+        <div class="text-center">
+          <a href="project-detail.html?id=startup" class="inline-flex items-center px-6 py-3 bg-sky-highlight text-charcoal font-semibold rounded-lg hover:bg-sky-dim transition-colors btn-press">
+            <i class="fas fa-external-link-alt mr-2"></i>
+            查看项目详情
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center">
+        <i class="fas fa-trophy text-sky-highlight mr-3"></i>
+        荣誉与技能
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-deep-blue rounded-2xl p-8 card-hover">
+          <h3 class="text-lg font-semibold text-white mb-6 flex items-center">
+            <i class="fas fa-code text-sky-highlight mr-2"></i>
+            专业技能
+          </h3>
+          <div class="tag-cloud">
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Excel高级函数</span>
+            <span class="skill-tag">数据透视表</span>
+            <span class="skill-tag">Wind</span>
+            <span class="skill-tag">同花顺iFind</span>
+            <span class="skill-tag">DCF估值模型</span>
+            <span class="skill-tag">Linux Ubuntu</span>
+            <span class="skill-tag">数据分析</span>
+            <span class="skill-tag">数据可视化</span>
+            <span class="skill-tag">行业研究</span>
+          </div>
+        </div>
+        <div class="bg-deep-blue rounded-2xl p-8 card-hover">
+          <h3 class="text-lg font-semibold text-white mb-6 flex items-center">
+            <i class="fas fa-award text-sky-highlight mr-2"></i>
+            所获荣誉
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fas fa-medal text-sky-highlight mt-1 mr-3"></i>
+              <div>
+                <p class="text-gray-200">奖学金</p>
+                <p class="text-gray-400 text-sm">两次国家励志奖学金、一次甲等奖学金、一次乙等奖学金</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-medal text-sky-highlight mt-1 mr-3"></i>
+              <div>
+                <p class="text-gray-200">全国大学生数学竞赛</p>
+                <p class="text-gray-400 text-sm">四川省一等奖</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-medal text-sky-highlight mt-1 mr-3"></i>
+              <div>
+                <p class="text-gray-200">国家级大学生创新训练项目</p>
+                <p class="text-gray-400 text-sm">负责人</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-medal text-sky-highlight mt-1 mr-3"></i>
+              <div>
+                <p class="text-gray-200">暑期三下乡社会实践</p>
+                <p class="text-gray-400 text-sm">校级三等奖</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 px-6 bg-deep-blue">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center justify-center">
+        <i class="fas fa-envelope text-sky-highlight mr-3"></i>
+        联系我
+      </h2>
+      <div class="bg-charcoal rounded-2xl p-8 text-center card-hover">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
+          <div class="flex items-center">
+            <i class="fas fa-phone text-sky-highlight text-xl mr-3"></i>
+            <span class="text-gray-300">17828016958</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fas fa-envelope text-sky-highlight text-xl mr-3"></i>
+            <span class="text-gray-300">sanchezxu@163.com</span>
+          </div>
+        </div>
+        <button class="px-8 py-3 bg-sky-highlight text-charcoal font-semibold rounded-lg hover:bg-sky-dim transition-colors btn-press">
+          发送邮件
+        </button>
+      </div>
+      <div class="text-center mt-8 text-gray-500 text-sm">
+        © 2026 徐胜 保留所有权利
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+
+    const isDarkMode = localStorage.getItem('darkMode') === 'true' || !localStorage.getItem('darkMode');
+    
+    if (!isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const darkMode = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', darkMode);
+      
+      if (darkMode) {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    });
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
