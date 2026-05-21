@@ -1,2 +1,2 @@
-# sanchezxu.github.io
+# sanchezxu.github.portfolio
 My CV and portfolio
